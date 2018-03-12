@@ -3,11 +3,21 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { MainComponent } from './main/main.component';
+import { BusinessComponent } from './business/business.component';
+import { SpendSalesComponent } from './spend-sales/spend-sales.component';
+import { OpportunityComponent } from './opportunity/opportunity.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent,
+    BusinessComponent,
+    SpendSalesComponent,
+    OpportunityComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule

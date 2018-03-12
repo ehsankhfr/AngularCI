@@ -9,6 +9,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {SpendSalesComponent} from './spend-sales/spend-sales.component';
 import {BusinessComponent} from './business/business.component';
 import {OpportunityComponent} from './opportunity/opportunity.component';
+import { StepsComponent } from './steps/steps.component';
 
 import appRoutes from './helpers/appRoutes';
 
@@ -18,7 +19,8 @@ const COMPONENTS = {
   HomeComponent,
   SpendSalesComponent,
   BusinessComponent,
-  OpportunityComponent
+  OpportunityComponent,
+  StepsComponent
 };
 
 describe('AppComponent', () => {

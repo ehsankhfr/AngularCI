@@ -4,6 +4,16 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {OpportunityComponent} from './opportunity.component';
 import {StepsComponent} from '../steps/steps.component';
 import {StepService} from '../step.service';
+import {HomeComponent} from '../home/home.component';
+import {SpendSalesComponent} from '../spend-sales/spend-sales.component';
+import {BusinessComponent} from '../business/business.component';
+
+const STEPS = {
+  HomeComponent,
+  BusinessComponent,
+  SpendSalesComponent,
+  OpportunityComponent,
+};
 
 describe('OpportunityComponent', () => {
   let component: OpportunityComponent;
@@ -14,8 +24,9 @@ describe('OpportunityComponent', () => {
       imports: [RouterTestingModule],
       declarations: [OpportunityComponent, StepsComponent],
       providers: [StepService]
-    })
-      .compileComponents();
+    }).compileComponents();
+
+    StepService.setSteps(Object.keys(STEPS));
   }));
 
   beforeEach(() => {

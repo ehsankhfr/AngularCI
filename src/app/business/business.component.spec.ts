@@ -4,6 +4,16 @@ import {BusinessComponent} from './business.component';
 import {StepsComponent} from '../steps/steps.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {StepService} from '../step.service';
+import {HomeComponent} from '../home/home.component';
+import {SpendSalesComponent} from '../spend-sales/spend-sales.component';
+import {OpportunityComponent} from '../opportunity/opportunity.component';
+
+const STEPS = {
+  HomeComponent,
+  BusinessComponent,
+  SpendSalesComponent,
+  OpportunityComponent,
+};
 
 describe('BusinessComponent', () => {
   let component: BusinessComponent;
@@ -16,6 +26,8 @@ describe('BusinessComponent', () => {
       providers: [StepService]
     })
       .compileComponents();
+
+    StepService.setSteps(Object.keys(STEPS));
   }));
 
   beforeEach(() => {

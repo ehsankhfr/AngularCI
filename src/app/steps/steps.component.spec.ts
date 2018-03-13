@@ -1,7 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 
-import { StepsComponent } from './steps.component';
+import {StepsComponent} from './steps.component';
+import {StepService} from '../step.service';
+import {HomeComponent} from '../home/home.component';
+import {SpendSalesComponent} from '../spend-sales/spend-sales.component';
+import {BusinessComponent} from '../business/business.component';
+import {OpportunityComponent} from '../opportunity/opportunity.component';
+
+const STEPS = {
+  HomeComponent,
+  BusinessComponent,
+  SpendSalesComponent,
+  OpportunityComponent,
+};
 
 describe('StepsComponent', () => {
   let component: StepsComponent;
@@ -9,9 +21,12 @@ describe('StepsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StepsComponent ]
+      declarations: [StepsComponent],
+      providers: [StepService]
     })
-    .compileComponents();
+      .compileComponents();
+
+    StepService.setSteps(Object.keys(STEPS));
   }));
 
   beforeEach(() => {

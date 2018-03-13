@@ -6,6 +6,16 @@ import {Location} from '@angular/common';
 
 import {HomeComponent} from './home.component';
 import {StepService} from '../step.service';
+import {SpendSalesComponent} from '../spend-sales/spend-sales.component';
+import {BusinessComponent} from '../business/business.component';
+import {OpportunityComponent} from '../opportunity/opportunity.component';
+
+const STEPS = {
+  HomeComponent,
+  BusinessComponent,
+  SpendSalesComponent,
+  OpportunityComponent,
+};
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -20,6 +30,8 @@ describe('HomeComponent', () => {
       declarations: [HomeComponent],
       providers: [StepService]
     }).compileComponents();
+
+    StepService.setSteps(Object.keys(STEPS));
 
     router = TestBed.get(Router);
   }));
@@ -40,12 +52,12 @@ describe('HomeComponent', () => {
     expect(img).toBeDefined();
   });
 
-  it('sohuld navigate to oppostunity', () => {
+  it('should navigate to opportunity', () => {
     const spy = spyOn(router, 'navigate');
     const submitEl = fixture.debugElement.query(By.css('.next-btn'));
     submitEl.triggerEventHandler('click', null);
     const url = spy.calls.first().args[0][1];
 
-    expect(url).toBe('oppurtunity');
+    expect(url).toBe('business');
   });
 });

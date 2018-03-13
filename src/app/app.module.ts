@@ -1,16 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router'; 
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { AppComponent } from './app.component';
-import { BusinessComponent } from './business/business.component';
-import { SpendSalesComponent } from './spend-sales/spend-sales.component';
-import { OpportunityComponent } from './opportunity/opportunity.component';
-import { HomeComponent } from './home/home.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { StepsComponent } from './steps/steps.component';
+import {AppComponent} from './app.component';
+import {BusinessComponent} from './business/business.component';
+import {SpendSalesComponent} from './spend-sales/spend-sales.component';
+import {OpportunityComponent} from './opportunity/opportunity.component';
+import {HomeComponent} from './home/home.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {StepsComponent} from './steps/steps.component';
 
 import appRoutes from './helpers/appRoutes';
+import {StepService} from './step.service';
 
 const COMPONENTS = {
   AppComponent,
@@ -22,6 +23,13 @@ const COMPONENTS = {
   StepsComponent
 };
 
+const STEPS = {
+  HomeComponent,
+  BusinessComponent,
+  SpendSalesComponent,
+  OpportunityComponent,
+};
+
 @NgModule({
   declarations: Object.values(COMPONENTS),
   imports: [
@@ -31,7 +39,11 @@ const COMPONENTS = {
       {enableTracing: true} // <-- debugging purposes only
     ),
   ],
-  providers: [],
+  providers: [StepService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    StepService.setSteps(Object.keys(STEPS));
+  }
+}

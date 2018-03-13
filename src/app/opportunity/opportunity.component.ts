@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {StepService} from '../step.service';
 
 @Component({
   selector: 'app-opportunity',
@@ -6,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./opportunity.component.scss']
 })
 export class OpportunityComponent implements OnInit {
+  router: Router;
 
-  constructor() { }
+  constructor(router: Router, step: StepService) {
+    this.router = router;
+  }
 
   ngOnInit() {
   }

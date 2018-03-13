@@ -3,6 +3,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 
 import {OpportunityComponent} from './opportunity.component';
 import {StepsComponent} from '../steps/steps.component';
+import {StepService} from '../step.service';
 
 describe('OpportunityComponent', () => {
   let component: OpportunityComponent;
@@ -11,7 +12,8 @@ describe('OpportunityComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [OpportunityComponent, StepsComponent]
+      declarations: [OpportunityComponent, StepsComponent],
+      providers: [StepService]
     })
       .compileComponents();
   }));

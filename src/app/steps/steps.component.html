@@ -1,11 +1,9 @@
 <ol class="progress progress--medium">
-  <li class="is-complete" data-step="1">
-    Business
-  </li>
-  <li class="is-active" data-step="2">
-    Spend Sales
-  </li>
-  <li data-step="3" class="progress__last">
-    Opportunity
+  <li *ngFor="let step of steps; let i=index;"
+      [attr.data-step]="i"
+      [class.is-complete]="isComplete(i)"
+      [class.is-active]="isActive(i)"
+      [class.is-progress_last]="isProgressLast(i)">
+    {{step}}
   </li>
 </ol>

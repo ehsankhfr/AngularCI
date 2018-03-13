@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 
 import {HomeComponent} from './home.component';
+import {StepService} from '../step.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -16,7 +17,8 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [HomeComponent]
+      declarations: [HomeComponent],
+      providers: [StepService]
     }).compileComponents();
 
     router = TestBed.get(Router);

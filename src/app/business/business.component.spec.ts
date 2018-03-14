@@ -45,6 +45,6 @@ describe('BusinessComponent', () => {
     const elem = fixture.debugElement;
 
     const steps = elem.queryAll(By.css('.progress'));
-    expect(steps.length).toBeDefined();
+    expect(steps.length).toBe(1);
   });
 });

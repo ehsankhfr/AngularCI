@@ -7,6 +7,7 @@ import {StepService} from '../step.service';
 import {HomeComponent} from '../home/home.component';
 import {SpendSalesComponent} from '../spend-sales/spend-sales.component';
 import {BusinessComponent} from '../business/business.component';
+import {By} from '@angular/platform-browser';
 
 const STEPS = {
   HomeComponent,
@@ -37,5 +38,12 @@ describe('OpportunityComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have progess template', () => {
+    const elem = fixture.debugElement;
+
+    const steps = elem.queryAll(By.css('.progress'));
+    expect(steps.length).toBe(1);
   });
 });

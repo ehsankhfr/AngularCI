@@ -54,12 +54,21 @@ describe('BusinessComponent', () => {
     expect(steps.length).toBe(1);
   });
 
-  it('should navigate to opportunity', () => {
+  it('should navigate forward to spand-sales', () => {
     const spy = spyOn(router, 'navigate');
     const submitEl = fixture.debugElement.query(By.css('.next-btn'));
     submitEl.triggerEventHandler('click', null);
     const url = spy.calls.first().args[0][1];
 
     expect(url).toBe('spend-sales');
+  });
+
+  it('should navigate back to home', () => {
+    const spy = spyOn(router, 'navigate');
+    const submitEl = fixture.debugElement.query(By.css('.prev-btn'));
+    submitEl.triggerEventHandler('click', null);
+    const url = spy.calls.first().args[0][1];
+
+    expect(url).toBe('home');
   });
 });

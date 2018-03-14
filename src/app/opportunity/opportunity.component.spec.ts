@@ -54,9 +54,18 @@ describe('OpportunityComponent', () => {
     expect(steps.length).toBe(1);
   });
 
-  it('should navigate to opportunity', () => {
+  it('should not be able to navigate forward', () => {
     const spy = spyOn(router, 'navigate');
     const submitEl = fixture.debugElement.query(By.css('.next-btn'));
-    expect(submitEl).toBeDefined();
+    expect(submitEl).toBeFalsy();
+  });
+
+  it('should navigate back to spend-sales', () => {
+    const spy = spyOn(router, 'navigate');
+    const submitEl = fixture.debugElement.query(By.css('.prev-btn'));
+    submitEl.triggerEventHandler('click', null);
+    const url = spy.calls.first().args[0][1];
+
+    expect(url).toBe('spend-sales');
   });
 });

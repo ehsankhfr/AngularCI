@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {StepService} from '../step.service';
 
@@ -24,5 +24,8 @@ export class OpportunityComponent implements OnInit {
 
   previous(): void {
     this.router.navigate(['/', this.step.previous(OpportunityComponent.STEP)]);
+  }
+
+  submit(): void {
   }
 }

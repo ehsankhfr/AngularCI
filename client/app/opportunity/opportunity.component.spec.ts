@@ -74,4 +74,11 @@ describe('OpportunityComponent', () => {
     const elem = fixture.debugElement.query(By.css('.step-form'));
     expect(elem).toBeTruthy();
   });
+
+  it('should navigate back to home', () => {
+    const spy = spyOn(component, 'submit');
+    const submitEl = fixture.debugElement.query(By.css('.submit-btn'));
+    submitEl.triggerEventHandler('click', null);
+    expect(spy).toHaveBeenCalled();
+  });
 });

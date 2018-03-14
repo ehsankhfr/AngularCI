@@ -4,6 +4,7 @@ import {SpendSalesComponent} from './spend-sales.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {StepService} from '../step.service';
 import {By} from '@angular/platform-browser';
+import {StepsComponent} from '../steps/steps.component';
 
 describe('SpendSalesComponent', () => {
   let component: SpendSalesComponent;
@@ -12,7 +13,7 @@ describe('SpendSalesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [SpendSalesComponent],
+      declarations: [SpendSalesComponent, StepsComponent],
       providers: [StepService]
     })
       .compileComponents();

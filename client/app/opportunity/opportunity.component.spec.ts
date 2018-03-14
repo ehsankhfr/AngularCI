@@ -70,7 +70,6 @@ describe('OpportunityComponent', () => {
   });
 
   it('should have form', () => {
-    const spy = spyOn(router, 'navigate');
     const elem = fixture.debugElement.query(By.css('.step-form'));
     expect(elem).toBeTruthy();
   });
@@ -80,5 +79,10 @@ describe('OpportunityComponent', () => {
     const submitEl = fixture.debugElement.query(By.css('.submit-btn'));
     submitEl.triggerEventHandler('click', null);
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('should have buttons', () => {
+    const elem = fixture.debugElement.query(By.css('.step__buttons'));
+    expect(elem).toBeTruthy();
   });
 });

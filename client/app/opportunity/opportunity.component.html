@@ -3,7 +3,7 @@
     <app-steps></app-steps>
   </div>
 
-  <div class="col-md-12 main__body">
+  <div class="col-md-12 step__body">
     <form class="step-form">
       <div class="form-group form-inline">
         <label for="formGroupExampleInput">Example label</label>
@@ -15,12 +15,14 @@
       </div>
     </form>
 
-    <button type="button" class="pull-left btn btn-info submit-btn" (click)="submit()">
-      Submit
-    </button>
+    <div class="step__buttons">
+      <button type="button" class="pull-right btn btn-info submit-btn" (click)="submit()">
+        Submit
+      </button>
 
-    <button type="button" class="pull-left btn btn-warning prev-btn" (click)="previous()">
-      Back
-    </button>
+      <button type="button" class="pull-left btn btn-warning prev-btn" (click)="previous()">
+        Back
+      </button>
+    </div>
   </div>
 </div>

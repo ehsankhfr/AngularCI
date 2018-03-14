@@ -48,7 +48,7 @@ describe('HomeComponent', () => {
 
   it('should create image', () => {
     const elem = fixture.nativeElement;
-    const img = elem.querySelector('.main__img');
+    const img = elem.querySelector('.home__img');
     expect(img).toBeDefined();
   });
 

@@ -73,8 +73,12 @@ describe('BusinessComponent', () => {
   });
 
   it('should have form', () => {
-    const spy = spyOn(router, 'navigate');
     const elem = fixture.debugElement.query(By.css('.step-form'));
+    expect(elem).toBeTruthy();
+  });
+
+  it('should have buttons', () => {
+    const elem = fixture.debugElement.query(By.css('.step__buttons'));
     expect(elem).toBeTruthy();
   });
 });

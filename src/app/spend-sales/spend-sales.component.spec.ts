@@ -5,10 +5,25 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {StepService} from '../step.service';
 import {By} from '@angular/platform-browser';
 import {StepsComponent} from '../steps/steps.component';
+import {Router} from '@angular/router';
+import {Location} from '@angular/common';
+import {OpportunityComponent} from '../opportunity/opportunity.component';
+import {HomeComponent} from '../home/home.component';
+import {BusinessComponent} from '../business/business.component';
+
+const STEPS = {
+  HomeComponent,
+  BusinessComponent,
+  SpendSalesComponent,
+  OpportunityComponent,
+};
 
 describe('SpendSalesComponent', () => {
   let component: SpendSalesComponent;
   let fixture: ComponentFixture<SpendSalesComponent>;
+
+  let location: Location;
+  let router: Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -17,6 +32,9 @@ describe('SpendSalesComponent', () => {
       providers: [StepService]
     })
       .compileComponents();
+
+    StepService.setSteps(Object.keys(STEPS));
+    router = TestBed.get(Router);
   }));
 
   beforeEach(() => {
@@ -34,5 +52,14 @@ describe('SpendSalesComponent', () => {
 
     const steps = elem.queryAll(By.css('.progress'));
     expect(steps.length).toBe(1);
+  });
+
+  it('should navigate to opportunity', () => {
+    const spy = spyOn(router, 'navigate');
+    const submitEl = fixture.debugElement.query(By.css('.next-btn'));
+    submitEl.triggerEventHandler('click', null);
+    const url = spy.calls.first().args[0][1];
+
+    expect(url).toBe('opportunity');
   });
 });

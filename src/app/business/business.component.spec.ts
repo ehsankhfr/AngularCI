@@ -8,6 +8,8 @@ import {HomeComponent} from '../home/home.component';
 import {SpendSalesComponent} from '../spend-sales/spend-sales.component';
 import {OpportunityComponent} from '../opportunity/opportunity.component';
 import {By} from '@angular/platform-browser';
+import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 const STEPS = {
   HomeComponent,
@@ -19,6 +21,9 @@ const STEPS = {
 describe('BusinessComponent', () => {
   let component: BusinessComponent;
   let fixture: ComponentFixture<BusinessComponent>;
+
+  let location: Location;
+  let router: Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -46,5 +51,14 @@ describe('BusinessComponent', () => {
 
     const steps = elem.queryAll(By.css('.progress'));
     expect(steps.length).toBe(1);
+  });
+
+  it('should navigate to opportunity', () => {
+    const spy = spyOn(router, 'navigate');
+    const submitEl = fixture.debugElement.query(By.css('.next-btn'));
+    submitEl.triggerEventHandler('click', null);
+    const url = spy.calls.first().args[0][1];
+
+    expect(url).toBe('spend-sales');
   });
 });

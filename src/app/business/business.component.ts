@@ -25,4 +25,8 @@ export class BusinessComponent implements OnInit {
   next(): void {
     this.router.navigate(['/', this.step.next(BusinessComponent.STEP)]);
   }
+
+  previous(): void {
+    this.router.navigate(['/', this.step.previous(BusinessComponent.STEP)]);
+  }
 }

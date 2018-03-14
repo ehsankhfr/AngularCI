@@ -25,4 +25,8 @@ export class SpendSalesComponent implements OnInit {
   next(): void {
     this.router.navigate(['/', this.step.next(SpendSalesComponent.STEP)]);
   }
+
+  previous(): void {
+    this.router.navigate(['/', this.step.previous(SpendSalesComponent.STEP)]);
+  }
 }

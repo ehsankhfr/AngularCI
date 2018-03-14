@@ -22,7 +22,7 @@ export class OpportunityComponent implements OnInit {
   ngOnInit() {
   }
 
-  next(): void {
-    this.router.navigate(['/', this.step.next(OpportunityComponent.STEP)]);
+  previous(): void {
+    this.router.navigate(['/', this.step.previous(OpportunityComponent.STEP)]);
   }
 }

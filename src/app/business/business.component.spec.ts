@@ -34,6 +34,7 @@ describe('BusinessComponent', () => {
       .compileComponents();
 
     StepService.setSteps(Object.keys(STEPS));
+    router = TestBed.get(Router);
   }));
 
   beforeEach(() => {

@@ -57,6 +57,6 @@ describe('OpportunityComponent', () => {
   it('should navigate to opportunity', () => {
     const spy = spyOn(router, 'navigate');
     const submitEl = fixture.debugElement.query(By.css('.next-btn'));
-    console.log(submitEl);
+    expect(submitEl).toBeDefined();
   });
 });

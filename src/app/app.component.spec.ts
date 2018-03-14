@@ -64,19 +64,25 @@ describe('AppComponent', () => {
     expect(location.path()).toBe('/home');
   }));
 
-  it('navigate to "search" takes you to /search', fakeAsync(() => {
+  it('navigate to "home" redirects you to /home', fakeAsync(() => {
+    router.navigate(['']);
+    tick(50);
+    expect(location.path()).toBe('/home');
+  }));
+
+  it('navigate to "business" takes you to /business', fakeAsync(() => {
     router.navigate(['/business']);
     tick(50);
     expect(location.path()).toBe('/business');
   }));
 
-  it('navigate to "search" takes you to /search', fakeAsync(() => {
+  it('navigate to "spendSales" takes you to /spendSales', fakeAsync(() => {
     router.navigate(['/spendSales']);
     tick(50);
     expect(location.path()).toBe('/spendSales');
   }));
 
-  it('navigate to "search" takes you to /search', fakeAsync(() => {
+  it('navigate to "opportunity" takes you to /opportunity', fakeAsync(() => {
     router.navigate(['/opportunity']);
     tick(50);
     expect(location.path()).toBe('/opportunity');

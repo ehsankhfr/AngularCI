@@ -1,6 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SpendSalesComponent } from './spend-sales.component';
+import {SpendSalesComponent} from './spend-sales.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {StepService} from '../step.service';
 
 describe('SpendSalesComponent', () => {
   let component: SpendSalesComponent;
@@ -8,9 +10,11 @@ describe('SpendSalesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SpendSalesComponent ]
+      imports: [RouterTestingModule],
+      declarations: [SpendSalesComponent],
+      providers: [StepService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

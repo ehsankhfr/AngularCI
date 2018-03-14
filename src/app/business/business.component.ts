@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {StepService} from '../step.service';
 
@@ -8,18 +8,21 @@ import {StepService} from '../step.service';
   styleUrls: ['./business.component.scss']
 })
 export class BusinessComponent implements OnInit {
+  static STEP = 'business';
   router: Router;
   step: StepService;
 
   constructor(router: Router, step: StepService) {
     this.router = router;
     this.step = step;
+
+    this.step.step = BusinessComponent.STEP;
   }
 
   ngOnInit() {
   }
 
   next(): void {
-    this.router.navigate(['/', this.step.next()]);
+    this.router.navigate(['/', this.step.next(BusinessComponent.STEP)]);
   }
 }

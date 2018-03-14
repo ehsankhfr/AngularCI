@@ -7,6 +7,8 @@ import {HomeComponent} from '../home/home.component';
 import {SpendSalesComponent} from '../spend-sales/spend-sales.component';
 import {BusinessComponent} from '../business/business.component';
 import {OpportunityComponent} from '../opportunity/opportunity.component';
+import {MockLocationStrategy, SpyLocation} from '@angular/common/testing';
+import {LocationStrategy, Location} from '@angular/common';
 
 const STEPS = {
   HomeComponent,
@@ -22,9 +24,12 @@ describe('StepsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [StepsComponent],
-      providers: [StepService]
-    })
-      .compileComponents();
+      providers: [
+        {provide: Location, useClass: SpyLocation},
+        {provide: LocationStrategy, useClass: MockLocationStrategy},
+        StepService
+      ]
+    }).compileComponents();
 
     StepService.setSteps(Object.keys(STEPS));
   }));

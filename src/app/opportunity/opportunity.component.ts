@@ -8,13 +8,21 @@ import {StepService} from '../step.service';
   styleUrls: ['./opportunity.component.scss']
 })
 export class OpportunityComponent implements OnInit {
+  static STEP = 'opportunity';
   router: Router;
+  step: StepService;
 
   constructor(router: Router, step: StepService) {
     this.router = router;
+    this.step = step;
+
+    this.step.step = OpportunityComponent.STEP;
   }
 
   ngOnInit() {
   }
 
+  next(): void {
+    this.router.navigate(['/', this.step.next(OpportunityComponent.STEP)]);
+  }
 }

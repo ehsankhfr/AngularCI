@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {Location} from '@angular/common';
 
 @Injectable()
 export class StepService {
@@ -21,7 +22,6 @@ export class StepService {
     );
 
     StepService.MIN_STEP = 0;
-
     StepService.MAX_STEP = routes.length - 1;
   }
 
@@ -33,20 +33,36 @@ export class StepService {
     return this._step < StepService.MAX_STEP;
   }
 
-  next(): string {
-    return this.hasNext() ?
-      StepService.STEPS[++this._step] :
-      StepService.STEPS[this._step];
+  next(location: string): string {
+    if (this.hasNext()) {
+      this._step = StepService.STEPS.indexOf(location) + 1;
+    }
+    return StepService.STEPS[this._step];
+  }
+
+  forceNext(force: boolean = false): string {
+    if (this.hasNext() && force) {
+      this._step++;
+    }
+    return StepService.STEPS[this._step];
   }
 
   hasPrevious(): boolean {
     return this._step > StepService.MIN_STEP;
   }
 
-  previous(): string {
-    return this.hasPrevious() ?
-      StepService.STEPS[--this._step] :
-      StepService.STEPS[this._step];
+  previous(location: string): string {
+    if (this.hasPrevious()) {
+      this._step = StepService.STEPS.indexOf(location) - 1;
+    }
+    return StepService.STEPS[this._step];
+  }
+
+  forcePrevious(force: boolean = false): string {
+    if (this.hasPrevious() && force) {
+      this._step--;
+    }
+    return StepService.STEPS[this._step];
   }
 
   getSteps(): string[] {
@@ -59,5 +75,14 @@ export class StepService {
 
   get stepId(): number {
     return this._step;
+  }
+
+  get steps(): string[] {
+    return StepService.STEPS;
+  }
+
+  set step(step: string) {
+    const foundIndex = StepService.STEPS.indexOf(step);
+    this._step = foundIndex !== -1 ? foundIndex : this._step;
   }
 }

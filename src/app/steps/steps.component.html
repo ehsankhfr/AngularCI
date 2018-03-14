@@ -1,9 +1,9 @@
 <ol class="progress progress--medium">
   <li *ngFor="let step of steps; let i=index;"
-      [attr.data-step]="i"
-      [class.is-complete]="isComplete(i)"
-      [class.is-active]="isActive(i)"
-      [class.is-progress_last]="isProgressLast(i)">
+      [attr.data-step]="i+1"
+      [class.is-complete]="isComplete(i+1)"
+      [class.is-active]="isActive(i+1)"
+      [class.is-progress_last]="isProgressLast(i+1)">
     {{step}}
   </li>
 </ol>

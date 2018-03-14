@@ -5,6 +5,8 @@ import {OpportunityComponent} from './opportunity/opportunity.component';
 import {SpendSalesComponent} from './spend-sales/spend-sales.component';
 import {HomeComponent} from './home/home.component';
 import {BusinessComponent} from './business/business.component';
+import {MockLocationStrategy, SpyLocation} from '@angular/common/testing';
+import {Location, LocationStrategy} from '@angular/common';
 
 describe('StepService', () => {
   beforeEach(() => {
@@ -18,7 +20,11 @@ describe('StepService', () => {
     );
 
     TestBed.configureTestingModule({
-      providers: [StepService]
+      providers: [
+        {provide: Location, useClass: SpyLocation},
+        {provide: LocationStrategy, useClass: MockLocationStrategy},
+        StepService
+      ]
     });
   });
 
@@ -27,20 +33,19 @@ describe('StepService', () => {
   }));
 
   it('should start from the first step', inject([StepService], (service: StepService) => {
-    expect(service.stepId).toBe(0);
+    expect(service.step).toBe('home');
   }));
 
   it('should not exceed max Step', inject([StepService], (service: StepService) => {
     for (let counter = 1; counter < 15; counter++) {
-      service.next();
+      service.forceNext(true);
     }
-
     expect(service.stepId).toBe(3);
   }));
 
   it('should not go lower than min Step', inject([StepService], (service: StepService) => {
     for (let counter = 1; counter < 15; counter++) {
-      service.previous();
+      service.forcePrevious(true);
     }
 
     expect(service.stepId).toBe(0);

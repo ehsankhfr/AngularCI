@@ -25,13 +25,13 @@ describe('HomeComponent', () => {
   let router: Router;
 
   beforeEach(async(() => {
+    StepService.setSteps(Object.keys(STEPS));
+
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [HomeComponent],
       providers: [StepService]
     }).compileComponents();
-
-    StepService.setSteps(Object.keys(STEPS));
 
     router = TestBed.get(Router);
   }));

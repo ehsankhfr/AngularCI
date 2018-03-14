@@ -68,4 +68,10 @@ describe('OpportunityComponent', () => {
 
     expect(url).toBe('spend-sales');
   });
+
+  it('should have form', () => {
+    const spy = spyOn(router, 'navigate');
+    const elem = fixture.debugElement.query(By.css('.step-form'));
+    expect(elem).toBeTruthy();
+  });
 });

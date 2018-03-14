@@ -71,4 +71,10 @@ describe('SpendSalesComponent', () => {
 
     expect(url).toBe('business');
   });
+
+  it('should have form', () => {
+    const spy = spyOn(router, 'navigate');
+    const elem = fixture.debugElement.query(By.css('.step-form'));
+    expect(elem).toBeTruthy();
+  });
 });

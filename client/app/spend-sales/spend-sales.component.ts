@@ -9,24 +9,38 @@ import {StepService} from '../step.service';
 })
 export class SpendSalesComponent implements OnInit {
   static STEP = 'spend-sales';
+
   router: Router;
-  step: StepService;
+  stepSrv: StepService;
 
-  constructor(router: Router, step: StepService) {
+  mockData;
+
+  constructor(router: Router, stepSrv: StepService) {
     this.router = router;
-    this.step = step;
+    this.stepSrv = stepSrv;
 
-    this.step.step = SpendSalesComponent.STEP;
+    this.stepSrv.step = SpendSalesComponent.STEP;
+
+    this.stepSrv.data = Object.assign(
+      {}, this.stepSrv.data, {['spendSales']: this.stepSrv.data['spendSales'] || {}}
+    );
+
+    // Mocking the presented data
+    this.mockData = {
+      listA: ['item1', 'item2', 'item3'],
+      listB: ['item1', 'item2', 'item3'],
+      listC: ['item1', 'item2', 'item3']
+    };
   }
 
   ngOnInit() {
   }
 
   next(): void {
-    this.router.navigate(['/', this.step.next(SpendSalesComponent.STEP)]);
+    this.router.navigate(['/', this.stepSrv.next(SpendSalesComponent.STEP)]);
   }
 
   previous(): void {
-    this.router.navigate(['/', this.step.previous(SpendSalesComponent.STEP)]);
+    this.router.navigate(['/', this.stepSrv.previous(SpendSalesComponent.STEP)]);
   }
 }

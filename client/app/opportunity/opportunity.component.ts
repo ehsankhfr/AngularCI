@@ -9,21 +9,35 @@ import {StepService} from '../step.service';
 })
 export class OpportunityComponent implements OnInit {
   static STEP = 'opportunity';
+
   router: Router;
-  step: StepService;
+  stepSrv: StepService;
 
-  constructor(router: Router, step: StepService) {
+  mockData;
+
+  constructor(router: Router, stepSrv: StepService) {
     this.router = router;
-    this.step = step;
+    this.stepSrv = stepSrv;
 
-    this.step.step = OpportunityComponent.STEP;
+    this.stepSrv.step = OpportunityComponent.STEP;
+
+    this.stepSrv.data = Object.assign(
+      {}, this.stepSrv.data, {[OpportunityComponent.STEP]: this.stepSrv.data[OpportunityComponent.STEP] || {}}
+    );
+
+    // Mocking the presented data
+    this.mockData = {
+      listA: ['item1', 'item2', 'item3'],
+      listB: ['item1', 'item2', 'item3'],
+      listC: ['item1', 'item2', 'item3']
+    };
   }
 
   ngOnInit() {
   }
 
   previous(): void {
-    this.router.navigate(['/', this.step.previous(OpportunityComponent.STEP)]);
+    this.router.navigate(['/', this.stepSrv.previous(OpportunityComponent.STEP)]);
   }
 
   submit(): void {

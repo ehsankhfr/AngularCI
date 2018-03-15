@@ -8,29 +8,20 @@
       <div class="form-group row">
         <div class="col-md-4">
           <label for="listA">List A*</label>
-          <select class="form-control" id="listA">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+          <select class="form-control" id="listA" [(ngModel)]="stepSrv.data.business.listA" name="listA">
+            <option *ngFor="let item of mockData.listA" [attr.value]="item">{{item}}</option>
           </select>
         </div>
         <div class="col-md-4">
           <label for="listB">List B*</label>
-          <select class="form-control" id="listB">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+          <select class="form-control" id="listB" [(ngModel)]="stepSrv.data.business.listB" name="listB">
+            <option *ngFor="let item of mockData.listB" [attr.value]="item">{{item}}</option>
           </select>
         </div>
         <div class="col-md-4">
           <label for="listC">List C*</label>
-          <select class="form-control" id="listC">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+          <select class="form-control" id="listC" [(ngModel)]="stepSrv.data.business.listC" name="listC">
+            <option *ngFor="let item of mockData.listC" [attr.value]="item">{{item}}</option>
           </select>
         </div>
       </div>

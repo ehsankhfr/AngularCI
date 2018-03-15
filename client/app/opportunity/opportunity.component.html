@@ -5,13 +5,25 @@
 
   <div class="col-md-12 step__body">
     <form class="step-form">
-      <div class="form-group form-inline">
-        <label for="formGroupExampleInput">Example label</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-      </div>
-      <div class="form-group form-inline">
-        <label for="formGroupExampleInput2">Another label</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+      <div class="form-group row">
+        <div class="col-md-4">
+          <label for="listA">List A*</label>
+          <select class="form-control" id="listA" [(ngModel)]="stepSrv.data.opportunity.listA" name="listA">
+            <option *ngFor="let item of mockData.listA" [attr.value]="item">{{item}}</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="listB">List B*</label>
+          <select class="form-control" id="listB" [(ngModel)]="stepSrv.data.opportunity.listB" name="listB">
+            <option *ngFor="let item of mockData.listB" [attr.value]="item">{{item}}</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="listC">List C*</label>
+          <select class="form-control" id="listC" [(ngModel)]="stepSrv.data.opportunity.listC" name="listC">
+            <option *ngFor="let item of mockData.listC" [attr.value]="item">{{item}}</option>
+          </select>
+        </div>
       </div>
     </form>
 

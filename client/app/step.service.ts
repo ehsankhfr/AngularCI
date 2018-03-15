@@ -3,11 +3,38 @@ import {Location} from '@angular/common';
 
 @Injectable()
 export class StepService {
+  get data(): object {
+    return this._data;
+  }
+
+  set data(value: object) {
+    this._data = value;
+  }
+
+  get step(): string {
+    return StepService.STEPS[this._step];
+  }
+
+  get stepId(): number {
+    return this._step;
+  }
+
+  get steps(): string[] {
+    return StepService.STEPS;
+  }
+
+  set step(step: string) {
+    const foundIndex = StepService.STEPS.indexOf(step);
+    this._step = foundIndex !== -1 ? foundIndex : this._step;
+  }
+
   static MIN_STEP = 1;
   static MAX_STEP = 3;
   private static STEPS: string[];
 
   private _step: number;
+
+  private _data: object;
 
   private static kebabCase(str: string): string {
     return str
@@ -27,6 +54,7 @@ export class StepService {
 
   constructor() {
     this._step = StepService.MIN_STEP;
+    this._data = {};
   }
 
   hasNext(): boolean {
@@ -67,22 +95,5 @@ export class StepService {
 
   getSteps(): string[] {
     return StepService.STEPS;
-  }
-
-  get step(): string {
-    return StepService.STEPS[this._step];
-  }
-
-  get stepId(): number {
-    return this._step;
-  }
-
-  get steps(): string[] {
-    return StepService.STEPS;
-  }
-
-  set step(step: string) {
-    const foundIndex = StepService.STEPS.indexOf(step);
-    this._step = foundIndex !== -1 ? foundIndex : this._step;
   }
 }

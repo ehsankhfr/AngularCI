@@ -12,6 +12,7 @@ import {OpportunityComponent} from './opportunity/opportunity.component';
 import { StepsComponent } from './steps/steps.component';
 
 import appRoutes from './helpers/appRoutes';
+import {FormsModule} from '@angular/forms';
 
 const COMPONENTS = {
   AppComponent,
@@ -29,7 +30,7 @@ describe('AppComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes(appRoutes(COMPONENTS))],
+      imports: [RouterTestingModule.withRoutes(appRoutes(COMPONENTS)), FormsModule],
       declarations: Object.values(COMPONENTS),
     }).compileComponents();
 

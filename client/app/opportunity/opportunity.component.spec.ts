@@ -10,6 +10,7 @@ import {BusinessComponent} from '../business/business.component';
 import {By} from '@angular/platform-browser';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 const STEPS = {
   HomeComponent,
@@ -27,7 +28,7 @@ describe('OpportunityComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, FormsModule],
       declarations: [OpportunityComponent, StepsComponent],
       providers: [StepService]
     }).compileComponents();
@@ -74,7 +75,7 @@ describe('OpportunityComponent', () => {
     expect(elem).toBeTruthy();
   });
 
-  it('should navigate back to home', () => {
+  it('should submit data', () => {
     const spy = spyOn(component, 'submit');
     const submitEl = fixture.debugElement.query(By.css('.submit-btn'));
     submitEl.triggerEventHandler('click', null);

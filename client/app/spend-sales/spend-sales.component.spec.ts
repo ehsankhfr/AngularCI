@@ -10,6 +10,7 @@ import {Location} from '@angular/common';
 import {OpportunityComponent} from '../opportunity/opportunity.component';
 import {HomeComponent} from '../home/home.component';
 import {BusinessComponent} from '../business/business.component';
+import {FormsModule} from '@angular/forms';
 
 const STEPS = {
   HomeComponent,
@@ -27,7 +28,7 @@ describe('SpendSalesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, FormsModule],
       declarations: [SpendSalesComponent, StepsComponent],
       providers: [StepService]
     })

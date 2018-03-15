@@ -10,6 +10,7 @@ import {OpportunityComponent} from '../opportunity/opportunity.component';
 import {By} from '@angular/platform-browser';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 const STEPS = {
   HomeComponent,
@@ -28,7 +29,7 @@ describe('BusinessComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [BusinessComponent, StepsComponent],
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, FormsModule],
       providers: [StepService]
     })
       .compileComponents();

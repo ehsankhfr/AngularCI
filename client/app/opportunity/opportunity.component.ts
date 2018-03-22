@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {StepService} from '../step.service';
+import {HttpClient} from '@angular/common/http';
+import {CONFIG} from '../../config';
 
 @Component({
   selector: 'app-opportunity',
@@ -12,10 +14,11 @@ export class OpportunityComponent implements OnInit {
 
   router: Router;
   stepSrv: StepService;
+  http: HttpClient;
 
   mockData;
 
-  constructor(router: Router, stepSrv: StepService) {
+  constructor(router: Router, stepSrv: StepService, http: HttpClient) {
     this.router = router;
     this.stepSrv = stepSrv;
 
@@ -31,6 +34,8 @@ export class OpportunityComponent implements OnInit {
       listB: ['item1', 'item2', 'item3'],
       listC: ['item1', 'item2', 'item3']
     };
+
+    this.http = http;
   }
 
   ngOnInit() {
@@ -41,5 +46,7 @@ export class OpportunityComponent implements OnInit {
   }
 
   submit(): void {
+    // this.http.post(CONFIG.devServer, this.stepSrv.data, {}).subscribe((res) => console.log(res), (err) => console.error(err));
   }
 }
+

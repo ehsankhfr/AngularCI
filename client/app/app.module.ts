@@ -13,6 +13,7 @@ import {StepsComponent} from './steps/steps.component';
 import appRoutes from './helpers/appRoutes';
 import {StepService} from './step.service';
 import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 const COMPONENTS = {
   AppComponent,
@@ -39,7 +40,8 @@ const STEPS = {
       appRoutes(COMPONENTS),
       {enableTracing: true} // <-- debugging purposes only
     ),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [StepService],
   bootstrap: [AppComponent]

@@ -11,6 +11,7 @@ import {By} from '@angular/platform-browser';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 const STEPS = {
   HomeComponent,
@@ -28,7 +29,7 @@ describe('OpportunityComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, FormsModule],
+      imports: [RouterTestingModule, FormsModule, HttpClientTestingModule],
       declarations: [OpportunityComponent, StepsComponent],
       providers: [StepService]
     }).compileComponents();
